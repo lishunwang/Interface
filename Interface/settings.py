@@ -1,3 +1,4 @@
+# -*- coding: utf-8 -*-
 """
 Django settings for Interface project.
 
@@ -27,8 +28,16 @@ DEBUG = True
 
 ALLOWED_HOSTS = []
 
+
+#设置服务器对POST上传文件大小的限制，设置为None则避过服务器检查，也可以设置一个值，如下：
+#DATA_UPLOAD_MAX_MEMORY_SIZE=None
+DATA_UPLOAD_MAX_MEMORY_SIZE=26214400
+
 #25M
 DATA_UPLOAD_MAX_NUMBER_FIELDS=26214400
+
+
+
 # Application definition
 
 INSTALLED_APPS = [
@@ -123,6 +132,10 @@ USE_TZ = True
 
 # Static files (CSS, JavaScript, Images)
 # https://docs.djangoproject.com/en/1.11/howto/static-files/
+STATIC_ROOT = os.path.join(os.path.dirname(__file__),'static')
+STATICFILES_DIRS = (
+    ('images',os.path.join(STATIC_ROOT,'images').replace('\\','/') ),
+)
 
 STATIC_URL = '/static/'
 
